@@ -1,0 +1,23 @@
+{
+  "name": "my-tools",
+  "version": "1.0.0",
+  "description": "Time Converter(Milatery to Standard) - Not Finsished",
+  "main": "index.js",
+  "scripts": {
+    "tailwind-f": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css --JIT --content=\"./*.html\" --watch",
+    "tailwind": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbidAlWassie/My-Tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbidAlWassie/My-Tools/issues"
+  },
+  "homepage": "https://github.com/AbidAlWassie/My-Tools#readme",
+  "dependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}

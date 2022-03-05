@@ -1,3 +1,3 @@
 # My-Tools
 
-Time Converter(Milatery to Standard) - Not Finsished
+Time Converter(Milatery to Standard) - Partially Finsished

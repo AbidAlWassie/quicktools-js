@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="build/styles.css">
+  <!-- <link rel="stylesheet" href="/build/styles.css"> -->
   <link rel="stylesheet" href="css/main.css">
   <title>Document</title>
 </head>
 <body>
-  <label for="standard">Standard</label>
-  <input type="text">
+
+  <h2>Military to Standard</h2>
   <label for="military">Military</label>
-  <input type="text">
-  <button onclick="m2s">Convert</button>
+  <input id="timeValue" type="text" placeholder="hour">
+  <!-- <input type="text" placeholder="minute"> -->
+  
+  <label for="military">Military</label>
+  <p id="cmvalue"></p>
+  <button onclick="m2s()">Convert</button>
   <br>
 
-  <label for="military">Military</label>
-  <input type="text">
+  <h2>Standard to Military</h2>
+  <label for="standard">Standard</label>
+  <input type="text" placeholder="hour">
+  <input type="text" placeholder="minute">
   <label for="standard">Standard</label>
   <input type="text">
   <button>Convert</button>

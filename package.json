@@ -4,7 +4,7 @@
   "description": "Time Converter(Milatery to Standard) - Not Finsished",
   "main": "index.js",
   "scripts": {
-    "tailwind-f": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css --JIT --content=\"./*.html\" --watch",
+    "tailwind-f": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css --JIT --content=\"./*/*.html\" --watch",
     "tailwind": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css"
   },
   "repository": {

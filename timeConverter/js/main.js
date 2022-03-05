@@ -1,11 +1,18 @@
 function m2s() {
 
-  const time = document.getElementById("timeValue").value.split(':'); // convert to array
+  // const time = document.getElementById("time").value.split(':');
 
-  // fetch
-  var hours = Number(time[0]);
-  var minutes = Number(time[1]);
-  var seconds = Number(time[2]);
+  const h = document.getElementById("h").value;
+  const m = document.getElementById("m").value;
+
+  console.log(h);
+  console.log(m);
+
+  // // fetch
+  // var hours = Number(time[0]);
+  // var minutes = Number(time[1]);
+  var hours = Number(h);
+  var minutes = Number(m);
   
   // calculate
   var timeValue;
@@ -19,7 +26,6 @@ function m2s() {
   }
   
   timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
-  timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;  // get seconds
   timeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
   
   // show

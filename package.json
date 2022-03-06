@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tailwind-f": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css --JIT --content=\"./*/*.html\" --watch",
-    "tailwind": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css"
+    "tailwind-m": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css --JIT --content=\"./*.html\" --watch"
   },
   "repository": {
     "type": "git",

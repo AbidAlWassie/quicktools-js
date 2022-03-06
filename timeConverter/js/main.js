@@ -1,16 +1,9 @@
 function m2s() {
 
-  // const time = document.getElementById("time").value.split(':');
 
   const h = document.getElementById("h").value;
   const m = document.getElementById("m").value;
 
-  console.log(h);
-  console.log(m);
-
-  // // fetch
-  // var hours = Number(time[0]);
-  // var minutes = Number(time[1]);
   var hours = Number(h);
   var minutes = Number(m);
   

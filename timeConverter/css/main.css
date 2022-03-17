@@ -2,3 +2,7 @@ body {
   background: #222;
   color: #ddd;
 }
+
+.card-holder {
+  width: 800px;
+}

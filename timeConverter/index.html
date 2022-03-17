@@ -47,25 +47,24 @@
 
       <div class="convert mb-3">
 
-        <label for="standard" class="border-l-4 border-blue-500 pl-1 inline">Standard Time:</label>
-        <div class="standardInput inline">
+        <div class="standardInput">
+          <label for="standard" class="border-l-4 border-blue-500 pl-1 inline-block">Standard Time:</label>
           <input id="h2" value="12" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
           :
           <input id="m2" value="00" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
           
-          <form action="">
-            <select id="ampmValue" class="form-select appearance-none
-              block px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-700 border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 focus:bg-gray-700 focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+            <select id="ampmValue" class="inline-block form-select appearance-none
+            inline-block px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-700 border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 focus:bg-gray-700 focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                 <option value="AM">AM</option>
                 <option value="PM">PM</option>
             </select>
-          </form>
 
-        </div>
-          
         <button onclick="s2m()" class="mx-5 p-2 bg-blue-700 rounded-md w-32 hover:bg-blue-600 transition ease-in-out">Convert Time</button>
   
         <label class="border-l-4 border-blue-500 pl-1 inline">Military Time: </label><p id="csvalue" class="inline"></p>
+        </div>
+          
+        
 
         <p class="mt-5 text-gray-300 text-sm">Just change the Standard time and hit the convert time button.</p>
       </div>

@@ -38,12 +38,6 @@ function m2s() {
   // console.log(timeValue);
 }
 
-// var time = "21:27:00"; // your input
-
-
-
-
-// var strUser = e.value;
 
 function s2m() {
 
@@ -81,4 +75,3 @@ standardPlaceholder.innerText = convertTime12to24(time12h);
 console.log('Military Time: ' + convertTime12to24(time12h));
 
 }
-// s2m();

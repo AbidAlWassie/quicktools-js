@@ -1,6 +1,6 @@
 # My-Tools
 
-- Time Converter(Military to Standard) - Partially Finsished 🟢🟡✅ - [Run it](https://amazing-bose-9287ae.netlify.app/timeconverter/)
+- Time Converter(Military to Standard) - Partially Finsished 🟢🟡✅ - [Run it](https://toolsbyabid.netlify.app/timeconverter/)
 
 - Time Zone Converter (Military) - Haven't Started 🔴❎
 

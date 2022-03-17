@@ -53,7 +53,7 @@ function s2m() {
   
   // const time12h = "01:02 PM";
   const time12h = h2 + ':' + m2 + ' ' + e.value;
-  console.log(time12h);
+  console.log('Standard Time: ' + time12h);
   // console.log(e.value);
 
 
@@ -78,7 +78,7 @@ const standardPlaceholder = document.getElementById("csvalue");
 // show standard time
 standardPlaceholder.innerText = convertTime12to24(time12h);
 
-// console.log(convertTime12to24(time12h));
+console.log('Military Time: ' + convertTime12to24(time12h));
 
 }
 // s2m();

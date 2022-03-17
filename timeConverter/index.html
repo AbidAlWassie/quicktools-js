@@ -39,13 +39,31 @@
   <br>
 
 
-  <h2>Standard to Military</h2>
-  <label for="standard">Standard</label>
-  <input type="text" placeholder="hour">
-  <input type="text" placeholder="minute">
-  <label for="standard">Standard</label>
-  <input type="text">
-  <button>Convert</button>
+  <div class="container flex justify-center">
+
+    <div class="m2s py-3 px-10 my-10 border-2 border-gray-400 w-2/3">
+
+      <h2 class="text-center mb-4 font-semibold">Standard to Military</h2>
+
+      <div class="convert mb-3">
+
+        <label for="standard" class="border-l-4 border-blue-500 pl-1 inline">Standard Time:</label>
+        <div class="standardInput inline">
+          <input id="h" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+          :
+          <input id="m" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+        </div>
+          
+        <button onclick="s2m()" class="mx-5 p-2 bg-blue-700 rounded-md w-32 hover:bg-blue-600 transition ease-in-out">Convert Time</button>
+  
+        <label class="border-l-4 border-blue-500 pl-1 inline">Military Time: </label><p id="cmvalue" class="inline"></p>
+
+        <p class="mt-5 text-gray-300 text-sm">Note: Default Military Time is set to 00:00 so the Standard time is 12:00 A.M. by default.</p>
+      </div>
+
+    </div>
+
+  </div>
   <!-- <p id="time">Hello</p> -->
   <p class="text-center mt-10">Copyright ©2022 Abid Al Wassie</p>
 

@@ -1,8 +1,7 @@
 function m2s() {
 
-
-  const h = document.getElementById("h").value;
-  const m = document.getElementById("m").value;
+  const h = document.getElementById("h").value; // get hour
+  const m = document.getElementById("m").value; // get minute
 
   var hours = Number(h);
   var minutes = Number(m);
@@ -10,12 +9,17 @@ function m2s() {
   // calculate
   var timeValue;
   
-  if (hours > 0 && hours <= 12) {
-    timeValue= "" + hours;
-  } else if (hours > 12) {
-    timeValue= "" + (hours - 12);
-  } else if (hours == 0) {
-    timeValue= "12";
+  if ((hours<=23 && hours>=0) && (minutes>=0 && minutes<=59)) {
+
+    if (hours > 0 && hours <= 12) {
+      timeValue= "" + hours;
+    } else if (hours > 12) {
+      timeValue= "" + (hours - 12);
+    } else if (hours == 0) {
+      timeValue= "12";
+    }
+  } else {
+    alert("invalid hour");
   }
   
   timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes

@@ -44,8 +44,12 @@ function m2s() {
   const h1 = document.getElementById("h").value; // get hour
   const m1 = document.getElementById("m").value; // get minute
 
-  var hours = Number(h1);
+  var hours = String(h1);
   var minutes = Number(m1);
+
+  if(hours.length<=1) {
+    hours = "0" + hours;
+  }
   
   // calculate
   var timeValue;
@@ -60,20 +64,25 @@ function m2s() {
       timeValue= "12";
     }
 
-  } else {
-    alert("invalid hour");
-    var militaryPlaceholder = document.getElementById("cmvalue");
-    militaryPlaceholder.innerText = "timeValue";
-  }
-  
-  timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
-  timeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
+    timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
+    timeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
   
   // show
   // alert(timeValue);
   
   var militaryPlaceholder = document.getElementById("cmvalue");
+  militaryPlaceholder.classList.remove("text-red");
   militaryPlaceholder.innerText = timeValue;
+
+  } else {
+    
+    // alert("invalid hour");
+    var militaryPlaceholder = document.getElementById("cmvalue");
+    militaryPlaceholder.classList.add("text-red");
+    militaryPlaceholder.innerText = "Error: Invalid value";
+  }
+  
+  
 }
 
 
@@ -91,9 +100,10 @@ function s2m() {
 
 const convertTime12to24 = (time12h) => {
   const [time, modifier] = time12h.split(' ');
-
+  
   let [hours, minutes] = time.split(':');
-
+  
+  if ((hours<=12 && hours>=0) && (minutes>=0 && minutes<=59)) {
   if (hours === '12') {
     hours = '00';
   }
@@ -103,10 +113,16 @@ const convertTime12to24 = (time12h) => {
   }
 
   return `${hours}:${minutes}`;
+  
+} else {
+  var standardPlaceholder = document.getElementById("csvalue");
+  standardPlaceholder.classList.add("text-red");
+  standardPlaceholder.innerText = "";
+}
 }
 
 const standardPlaceholder = document.getElementById("csvalue");
-  
+standardPlaceholder.classList.remove("text-red");
 // show standard time
 standardPlaceholder.innerText = convertTime12to24(time12h);
 

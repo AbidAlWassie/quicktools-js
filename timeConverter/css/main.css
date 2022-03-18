@@ -1,6 +1,7 @@
 body {
   background: #222;
   color: #ddd;
+  user-select: none;
 }
 
 .card-holder {
@@ -9,4 +10,8 @@ body {
 
 .card-holder-mid {
   width: 500px;
+}
+
+.text-red {
+  color: rgb(255, 32, 32);
 }

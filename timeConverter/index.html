@@ -17,12 +17,12 @@
       <h2 class="text-center mb-4 font-semibold">Military to Standard</h2>
 
       <div class="convert mb-3">
-
+        
         <label for="military" class="border-l-4 border-blue-500 pl-1 inline">Military Time:</label>
         <div class="militaryInput inline">
-          <input id="h" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+          <input id="h" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-12 py-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
           :
-          <input id="m" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+          <input id="m" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-12 py-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
         </div>
           
         <button onclick="m2s()" class="mx-5 p-2 bg-blue-700 rounded-md w-32 hover:bg-blue-600 transition ease-in-out">Convert Time</button>
@@ -49,12 +49,11 @@
 
         <div class="standardInput">
           <label for="standard" class="border-l-4 border-blue-500 pl-1 inline-block">Standard Time:</label>
-          <input id="h2" value="12" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+          <input id="h2" value="12" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-12 py-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
           :
-          <input id="m2" value="00" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-24 py-2 px-4 text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+          <input id="m2" value="00" type="text" placeholder="00" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-12 py-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500 mr-2">
           
-            <select id="ampmValue" class="inline-block form-select appearance-none
-            inline-block px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-700 border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 focus:bg-gray-700 focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+            <select id="ampmValue" class="form-select appearance-none inline-block px-3 py-2 text-base font-normal text-gray-300 bg-gray-700 border border-solid border-gray-600 rounded m-0 focus:text-gray-100 focus:bg-gray-700 focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                 <option value="AM">AM</option>
                 <option value="PM">PM</option>
             </select>

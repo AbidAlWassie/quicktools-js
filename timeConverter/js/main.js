@@ -1,3 +1,32 @@
+function snowCurrentTime() {
+  var currentDate = new Date();
+  var currentHours = currentDate.getHours();
+  var currentMinutes = currentDate.getMinutes();
+  var currentTime = currentHours+':'+currentMinutes;
+  var convertedValue;
+
+  if (currentHours > 0 && currentHours <= 12) {
+    convertedValue= "" + currentHours;
+  } else if (currentHours > 12) {
+    convertedValue= "" + (currentHours - 12);
+  } else if (currentHours == 0) {
+    convertedValue= "12";
+  }
+  
+  convertedValue += (currentMinutes < 10) ? ":0" + currentMinutes : ":" + currentMinutes;  // get minutes
+  convertedValue += (currentHours >= 12) ? " P.M." : " A.M.";  // get AM/PM
+
+  console.log(convertedValue);
+
+  var currentMilitaryTime = document.getElementById("mvalue");
+  var currentStandardTime = document.getElementById("svalue");
+
+
+  currentStandardTime.innerText = convertedValue;
+  currentMilitaryTime.innerText = currentTime;
+
+}
+
 function m2s() {
 
   const h1 = document.getElementById("h").value; // get hour
@@ -75,3 +104,4 @@ standardPlaceholder.innerText = convertTime12to24(time12h);
 console.log('Military Time: ' + convertTime12to24(time12h));
 
 }
+

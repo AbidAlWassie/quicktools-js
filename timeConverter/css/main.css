@@ -6,3 +6,7 @@ body {
 .card-holder {
   width: 800px;
 }
+
+.card-holder-mid {
+  width: 500px;
+}

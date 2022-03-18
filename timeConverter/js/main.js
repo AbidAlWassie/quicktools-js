@@ -1,22 +1,34 @@
 function snowCurrentTime() {
   var currentDate = new Date();
-  var currentHours = currentDate.getHours();
-  var currentMinutes = currentDate.getMinutes();
-  var currentTime = currentHours+':'+currentMinutes;
-  var convertedValue;
+  var currentHours = String(currentDate.getHours());
+  var currentMinutes = String(currentDate.getMinutes());
 
-  if (currentHours > 0 && currentHours <= 12) {
-    convertedValue= "" + currentHours;
-  } else if (currentHours > 12) {
-    convertedValue= "" + (currentHours - 12);
-  } else if (currentHours == 0) {
-    convertedValue= "12";
+  // fixed a silly bug
+  if(currentHours.length<=1) {
+    currentHours = "0" + currentHours;
+  } else if (currentMinutes.length<=1) {
+    currentMinutes = "0" + currentMinutes;
   }
-  
-  convertedValue += (currentMinutes < 10) ? ":0" + currentMinutes : ":" + currentMinutes;  // get minutes
-  convertedValue += (currentHours >= 12) ? " P.M." : " A.M.";  // get AM/PM
 
-  console.log(convertedValue);
+  console.log(currentHours.length); // checking if the lengths have increased
+  console.log(currentMinutes.length); // checking if the lengths have increased
+  
+    
+    var currentTime = currentHours+':'+currentMinutes;
+    var convertedValue;
+    
+    if (currentHours > 0 && currentHours <= 12) {
+      convertedValue= "" + currentHours;
+    } else if (currentHours > 12) {
+      convertedValue= "" + (currentHours - 12);
+    } else if (currentHours == 0) {
+      convertedValue= "12";
+    }
+    
+    convertedValue += (currentMinutes < 10) ? ":0" + currentMinutes : ":" + currentMinutes;  // get minutes
+    convertedValue += (currentHours >= 12) ? " P.M." : " A.M.";  // get AM/PM
+    
+    console.log(convertedValue);
 
   var currentMilitaryTime = document.getElementById("mvalue");
   var currentStandardTime = document.getElementById("svalue");

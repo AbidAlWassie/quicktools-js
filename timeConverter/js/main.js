@@ -10,8 +10,8 @@ function snowCurrentTime() {
     currentMinutes = "0" + currentMinutes;
   }
 
-  console.log(currentHours.length); // checking if the lengths have increased
-  console.log(currentMinutes.length); // checking if the lengths have increased
+  // console.log(currentHours.length); //checking if the lengths have increased
+  // console.log(currentMinutes.length); //checking if the lengths have increased
   
     
     var currentTime = currentHours+':'+currentMinutes;
@@ -28,7 +28,7 @@ function snowCurrentTime() {
     convertedValue += (currentMinutes < 10) ? ":0" + currentMinutes : ":" + currentMinutes;  // get minutes
     convertedValue += (currentHours >= 12) ? " P.M." : " A.M.";  // get AM/PM
     
-    console.log(convertedValue);
+    // console.log(convertedValue);
 
   var currentMilitaryTime = document.getElementById("mvalue");
   var currentStandardTime = document.getElementById("svalue");
@@ -73,10 +73,7 @@ function m2s() {
   // alert(timeValue);
   
   var militaryPlaceholder = document.getElementById("cmvalue");
-  
-  // const militaryValue
   militaryPlaceholder.innerText = timeValue;
-  // console.log(timeValue);
 }
 
 
@@ -88,7 +85,7 @@ function s2m() {
   
   // const time12h = "01:02 PM";
   const time12h = h2 + ':' + m2 + ' ' + e.value;
-  console.log('Standard Time: ' + time12h);
+  // console.log('Standard Time: ' + time12h);
   // console.log(e.value);
 
 
@@ -113,7 +110,7 @@ const standardPlaceholder = document.getElementById("csvalue");
 // show standard time
 standardPlaceholder.innerText = convertTime12to24(time12h);
 
-console.log('Military Time: ' + convertTime12to24(time12h));
+// console.log('Military Time: ' + convertTime12to24(time12h));
 
 }
 

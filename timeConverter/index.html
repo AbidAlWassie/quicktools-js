@@ -103,8 +103,13 @@
 </body>
 <script src="js/main.js"></script>
 <script>
-  snowCurrentTime();
-  m2s();
-  s2m();
+  window.onload = function() {
+    setInterval(function() {
+      snowCurrentTime();
+      m2s();
+      s2m();
+      // console.log("Refreshed");
+    }, 1000);
+  }
 </script>
 </html>

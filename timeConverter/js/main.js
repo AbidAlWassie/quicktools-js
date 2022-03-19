@@ -94,12 +94,17 @@ function m2s() {
 
 function s2m() {
 
+  function addZero(i) {
+    if (i < 10) {i = "0" + i}
+    return i;
+  }
+
   var e = document.getElementById("ampmValue");
-  const h2 = document.getElementById("h2").value;
-  const m2 = document.getElementById("m2").value;
+  const h2 = Number(document.getElementById("h2").value);
+  const m2 = Number(document.getElementById("m2").value);
   
   // const time12h = "01:02 PM";
-  const time12h = h2 + ':' + m2 + ' ' + e.value;
+  const time12h = addZero(h2) + ':' + addZero(m2) + ' ' + e.value;
   // console.log('Standard Time: ' + time12h);
   // console.log(e.value);
 

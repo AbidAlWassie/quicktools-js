@@ -103,7 +103,7 @@ const convertTime12to24 = (time12h) => {
   
   let [hours, minutes] = time.split(':');
   
-  if ((hours<=12 && hours>=0) && (minutes>=0 && minutes<=59)) {
+  if ((hours<=12 && hours>=1) && (minutes>=0 && minutes<=59)) {
   if (hours === '12') {
     hours = '00';
   }

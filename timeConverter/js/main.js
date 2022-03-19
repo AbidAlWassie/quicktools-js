@@ -1,20 +1,26 @@
 function snowCurrentTime() {
+
+  function addZero(i) {
+    if (i < 10) {i = "0" + i}
+    return i;
+  }
+
   var currentDate = new Date();
-  var currentHours = String(currentDate.getHours());
+  var currentHours = String(addZero(currentDate.getHours()));
   var currentMinutes = String(currentDate.getMinutes());
 
   // fixed a silly bug
-  if(currentHours.length<=1) {
-    currentHours = "0" + currentHours;
-  } else if (currentMinutes.length<=1) {
-    currentMinutes = "0" + currentMinutes;
-  }
+  // if(currentHours.length<=1) {
+  //   currentHours = "0" + currentHours;
+  // } else if (currentMinutes.length<=1) {
+  //   currentMinutes = "0" + currentMinutes;
+  // }
 
   // console.log(currentHours.length); //checking if the lengths have increased
   // console.log(currentMinutes.length); //checking if the lengths have increased
   
     
-    var currentTime = currentHours+':'+currentMinutes;
+    var currentTime = currentHours+':'+addZero(currentMinutes);
     var convertedValue;
     
     if (currentHours > 0 && currentHours <= 12) {
@@ -32,7 +38,7 @@ function snowCurrentTime() {
 
   var currentMilitaryTime = document.getElementById("mvalue");
   var currentStandardTime = document.getElementById("svalue");
-
+    
 
   currentStandardTime.innerText = convertedValue;
   currentMilitaryTime.innerText = currentTime;

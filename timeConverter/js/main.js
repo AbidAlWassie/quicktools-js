@@ -8,17 +8,6 @@ function snowCurrentTime() {
   var currentDate = new Date();
   var currentHours = String(addZero(currentDate.getHours()));
   var currentMinutes = String(currentDate.getMinutes());
-
-  // fixed a silly bug
-  // if(currentHours.length<=1) {
-  //   currentHours = "0" + currentHours;
-  // } else if (currentMinutes.length<=1) {
-  //   currentMinutes = "0" + currentMinutes;
-  // }
-
-  // console.log(currentHours.length); //checking if the lengths have increased
-  // console.log(currentMinutes.length); //checking if the lengths have increased
-  
     
     var currentTime = currentHours+':'+addZero(currentMinutes);
     var convertedValue;

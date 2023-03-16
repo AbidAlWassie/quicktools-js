@@ -23,6 +23,6 @@ function convertToFeetInches() {
   lr = length.toFixed(6);
   sumFt = Math.floor(lr / 12);
   sumIn = Math.floor(lr) - Math.floor(12 * sumFt);
-  outputF.innerHTML = `${sumFt} `;
-  outputI.innerHTML = `${sumIn} `;
+  outputF.innerHTML = `${sumFt} feet ${sumIn} inches`;
+  // outputI.innerHTML = `${sumIn} `;
 }

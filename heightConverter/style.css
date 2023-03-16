@@ -1,6 +1,25 @@
-/* .container {
+.container {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} */
+}
+
+body {
+  background: #222;
+  color: #ddd;
+  user-select: none;
+}
+
+.card-holder {
+  width: 800px;
+}
+
+.card-holder-mid {
+  width: 500px;
+}
+
+.text-red {
+  color: rgb(255, 32, 32);
+}

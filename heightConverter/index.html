@@ -4,30 +4,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pico.min.css">
+  <!-- <link rel="stylesheet" href="pico.min.css"> -->
+  <link rel="stylesheet" href="../build/styles.css">
   <link rel="stylesheet" href="style.css">
-  <title>Feet+Inches to Meters Conversion</title>
+  <title>Height Conversion</title>
 </head>
-<body>
+<body class="bg-zinc-800 text-gray-100">
 
   <div class="container">
-    
-    <div class="row">
-      <label for="inputFeet">Feet:</label>
-      <input type="text" id="inputFeet" value="">
-      <label for="inputInch">Inch:</label>
-      <input type="text" id="inputInch" value="">
-      <button type="submit" onclick="convertToMeters()">Convert</button>
-      <p>Output: <span id="output">Sum</span></p>
+
+    <div class="row card-holder-mid m2s py-6 px-14 my-10 border-2 border-gray-600 rounded-md">
+      <h2 class="text-center mb-4 font-semibold">Feet and Inches to Meter</h2>
+      <label for="inputFeet" class="border-l-4 border-blue-500 pl-1 inline">Feet:</label>
+
+      <input type="text" id="inputFeet" value="" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+
+      <label for="inputInch" class="border-l-4 border-blue-500 pl-1 inline">Inch:</label>
+
+      <input type="text" id="inputInch" value="" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+
+      <button type="submit" onclick="convertToMeters()" class="mx-1 p-2 bg-blue-700 rounded-md w-24 hover:bg-blue-600 transition ease-in-out">Convert</button>
+
+      <p>Output: <span id="output" class="font-bold">(Meter)</span></p>
     </div>
 
-    <div class="row">
+    <div class="row card-holder-mid m2s py-6 px-14 my-10 border-2 border-gray-600 rounded-md">
+      <h2 class="text-center mb-4 font-semibold">Meter to Feet and Inches</h2>
       <label for="inputMeters">Meter:</label>
-      <input type="text" id="inputMeters" value="">
-      <button type="submit" onclick="convertToFeetInches()">Convert</button>
-      <p>Output Feet: <span id="outputF"></span>Inch: <span id="outputI"></span></p>
+      <input type="text" id="inputMeters" value="" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+      <button type="submit" onclick="convertToFeetInches()" class="mx-1 p-2 bg-blue-700 rounded-md w-24 hover:bg-blue-600 transition ease-in-out">Convert</button>
+      <p class="font-600">Output: <span id="outputF" class="font-bold">(Feet and Inches)</span> <span id="outputI"></span></p>
     </div>
-
   </div>
 
   <script src="script.js"></script>

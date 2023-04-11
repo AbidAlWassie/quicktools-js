@@ -6,16 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="build/styles.css">
   <title>My Tools</title>
 </head>
 
-<body>
+<body class="bg-gray-800">
+
+  <div class="navbar container justify-normal items-start">
+    <div class="text-sm breadcrumbs">
+      <ul>
+        <li>
+          <a>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="../">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Tools
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="container">
+
     <h2>My Tools</h2>
-    <a href="timeConverter/index.html">Time Converter</a> <br>
-    <a href="heightConverter/index.html">Height Converter</a> <br>
-    <a href="https://abidalwassie.github.io/icon-resizer/">Icon Resizer</a>
-    <p>Copyright ©2023 <a href="https://onemandev.studio" target="_blank">Abid Al Wassie</a></p>
+
+    <ol type="1">
+      <li><a class="link link-info anchor" href="timeConverter/index.html">Time Converter</a></li>
+      <li><a class="link link-info anchor" href="heightConverter/index.html">Height Converter</a></li>
+      <li><a class="link link-info anchor" href="https://abidalwassie.github.io/icon-resizer/">Icon Resizer</a></li>
+    </ol>
+
+    <p>Copyright ©2023 <a class="link link-info anchor" href="https://onemandev.studio" target="_blank">Abid Al
+        Wassie</a></p>
   </div>
 </body>
 

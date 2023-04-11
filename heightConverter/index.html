@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,41 @@
   <link rel="stylesheet" href="style.css">
   <title>Height Conversion</title>
 </head>
+
 <body class="bg-zinc-800 text-gray-100">
+
+  <div class="container navbar justify-normal items-start">
+    <div class="text-sm breadcrumbs">
+      <ul>
+        <li>
+          <a>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="../">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Tools
+          </a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+            </path>
+          </svg>
+          Time Converter
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <div class="container">
 
@@ -17,13 +52,16 @@
       <h2 class="text-center mb-4 font-semibold">Feet and Inches to Meter</h2>
       <label for="inputFeet" class="border-l-4 border-blue-500 pl-1 inline">Feet:</label>
 
-      <input type="text" id="inputFeet" value="" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+      <input type="text" id="inputFeet" value=""
+        class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
 
       <label for="inputInch" class="border-l-4 border-blue-500 pl-1 inline">Inch:</label>
 
-      <input type="text" id="inputInch" value="" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+      <input type="text" id="inputInch" value=""
+        class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
 
-      <button type="submit" onclick="convertToMeters()" class="mx-1 p-2 bg-blue-700 rounded-md w-24 hover:bg-blue-600 transition ease-in-out">Convert</button>
+      <button type="submit" onclick="convertToMeters()"
+        class="mx-1 p-2 bg-blue-700 rounded-md w-24 hover:bg-blue-600 transition ease-in-out">Convert</button>
 
       <p>Output: <span id="output" class="font-bold">(Meter)</span></p>
     </div>
@@ -31,14 +69,20 @@
     <div class="row card-holder-mid m2s py-6 px-14 my-10 border-2 border-gray-600 rounded-md">
       <h2 class="text-center mb-4 font-semibold">Meter to Feet and Inches</h2>
       <label for="inputMeters">Meter:</label>
-      <input type="text" id="inputMeters" value="" class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
-      <button type="submit" onclick="convertToFeetInches()" class="mx-1 p-2 bg-blue-700 rounded-md w-24 hover:bg-blue-600 transition ease-in-out">Convert</button>
-      <p class="font-600">Output: <span id="outputF" class="font-bold">(Feet and Inches)</span> <span id="outputI"></span></p>
+      <input type="text" id="inputMeters" value=""
+        class="bg-gray-700 appearance-none border-2 border-gray-600 rounded w-16 h-8 my-2 text-center text-gray-100 leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500">
+      <button type="submit" onclick="convertToFeetInches()"
+        class="mx-1 p-2 bg-blue-700 rounded-md w-24 hover:bg-blue-600 transition ease-in-out">Convert</button>
+      <p class="font-600">Output: <span id="outputF" class="font-bold">(Feet and Inches)</span> <span
+          id="outputI"></span></p>
     </div>
 
-    <p class="text-center mt-10">Copyright ©2023 <a class="text-center mt-10 text-blue-500 hover:text-blue-400 font-bold transition-all" href="https://onemandev.studio" target="_blank">Abid Al Wassie</a></p>
+    <p class="text-center mt-10">Copyright ©2023 <a
+        class="text-center mt-10 text-blue-500 hover:text-blue-400 font-bold transition-all"
+        href="https://onemandev.studio" target="_blank">Abid Al Wassie</a></p>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>

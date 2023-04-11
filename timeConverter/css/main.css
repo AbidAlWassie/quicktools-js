@@ -15,3 +15,46 @@ body {
 .text-red {
   color: rgb(255, 32, 32);
 }
+
+.hide-show,
+.hide-show2 {
+  display: none;
+}
+
+@media screen and (max-width: 444px) {
+  /* body {
+    background-color: blue;
+  } */
+
+  .float-right {
+    float: left;
+  }
+
+}
+
+@media screen and (max-width: 496px) {
+  .hide-show {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 526px) {
+  .hide-show2 {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 374px) {
+
+  input {
+    width: 26px !important;
+    height: 26px !important;
+    margin: 0 !important;
+  }
+
+  select {
+    width: 34px !important;
+    height: 32px !important;
+    padding: 2px 4px !important;
+  }
+}

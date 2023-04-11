@@ -10,8 +10,77 @@ body {
 
 .card-holder-mid {
   width: 500px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.card-holder {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .text-red {
   color: rgb(255, 32, 32);
+}
+
+@media screen and (max-width: 512px) {
+  .element1{
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .element2{
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .break {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .break > * {
+    display: inline !important;
+  }
+
+  .card-holder-mid {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .card-holder {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 256px) {
+  .element{
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .break {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-holder-mid {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }

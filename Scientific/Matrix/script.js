@@ -65,7 +65,7 @@ function createEditableTable(matrix, matrixName) {
   const headerRow = document.createElement('tr');
   for (let i = 0; i < matrix[0].length; i++) {
     const th = document.createElement('th');
-    th.textContent = `Column ${i + 1}`;
+    th.innerHTML = `C<sub>${i + 1}</sub>`;
     headerRow.appendChild(th);
   }
   thead.appendChild(headerRow);
@@ -141,7 +141,7 @@ function downloadMatrices() {
 
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'matrices.json';
+  a.download = 'matrix.json';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

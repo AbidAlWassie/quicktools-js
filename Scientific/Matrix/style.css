@@ -42,5 +42,5 @@ input#rows, input#cols {
 input[type=text] {
   text-align: center;
   min-width: 24px;
-  max-width: 40px;
+  max-width: 45px;
 }

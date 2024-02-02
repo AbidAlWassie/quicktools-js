@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="pico.min.css"> -->
+  <link rel="stylesheet" href="../../build/styles.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Matrix</title>
+</head>
+
+<body class="bg-zinc-800 text-gray-100">
+
+  <div class="container navbar justify-normal items-start">
+    <div class="text-sm breadcrumbs">
+      <ul>
+        <li>
+          <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="../../">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Tools
+          </a>
+        </li>
+        <li>
+          <a href="../">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            Scientific
+          </a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+            </path>
+          </svg>
+          Matrix
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row card-holder-mid m2s py-6 px-14 my-10 border-2 border-red-600  rounded-md">
+      <h2 class="text-center mb-4 font-semibold">Matrix</h2>
+      <div class="flex justify-center flex-col">
+        <label for="rows">Rows:</label>
+        <input type="number" id="rows" min="1" value="2">
+      
+        <label for="cols">Columns:</label>
+        <input type="number" id="cols" min="1" value="2">
+      
+        <button onclick="createMatrix()">Create Matrix</button>
+        <input type="file" id="fileInput" accept=".json" onchange="loadMatricesFromFile(event)">
+        <button onclick="downloadMatrices()">Download Matrices</button>
+      </div>
+      
+      <div class="matrix-container" id="matrixContainer"></div>
+    </div>
+
+    <p class="text-center mt-10">Copyright ©2023 <a
+        class="text-center mt-10 text-blue-500 hover:text-blue-400 font-bold transition-all"
+        href="https://onemandev.studio" target="_blank">Abid Al Wassie</a></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

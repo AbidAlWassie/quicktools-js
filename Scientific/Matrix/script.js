@@ -29,11 +29,17 @@ function generateMatrix(rows, cols) {
 
 function displayMatrices() {
   const matrixContainer = document.getElementById('matrixContainer');
+
+  // Ensure the 'matrixContainer' element is found before proceeding
+  if (!matrixContainer) {
+    console.error('Error: Element with ID "matrixContainer" not found.');
+    return;
+  }
+
   matrixContainer.innerHTML = '';
 
   for (const [name, matrix] of Object.entries(matrices)) {
     const matrixElement = document.createElement('div');
-    matrixElement.classList.add('matrix');
     matrixElement.textContent = name;
 
     const table = createEditableTable(matrix, name);
@@ -45,6 +51,12 @@ function displayMatrices() {
 
 function createEditableTable(matrix, matrixName) {
   const table = document.createElement('table');
+
+  // Check if matrix is undefined or does not have valid length
+  if (!matrix || !matrix.length || !matrix[0] || !matrix[0].length) {
+    console.error('Invalid matrix data:', matrix);
+    return table;
+  }
 
   // Create table headers
   const thead = document.createElement('thead');
@@ -64,7 +76,7 @@ function createEditableTable(matrix, matrixName) {
     for (let j = 0; j < matrix[i].length; j++) {
       const cell = document.createElement('td');
       const input = document.createElement('input');
-      input.type = 'number';
+      input.type = 'text';
       input.value = matrix[i][j];
       input.addEventListener('input', (event) => updateMatrix(matrixName, i, j, event.target.value));
       cell.appendChild(input);
@@ -78,21 +90,44 @@ function createEditableTable(matrix, matrixName) {
 }
 
 function updateMatrix(matrixName, rowIndex, colIndex, value) {
-  matrices[matrixName][rowIndex][colIndex] = parseInt(value) || 0;
+  matrices[matrixName][rowIndex][colIndex] = value;
 }
 
-function loadMatricesFromFile(event) {
-  const fileInput = event.target;
+function loadMatrixFromFile() {
+  const matrixNameInput = document.getElementById('uploadMatrixName');
+  const matrixName = matrixNameInput.value.trim().toUpperCase();
+
+  if (!matrixName) {
+    alert('Please enter a matrix name.');
+    return;
+  }
+
+  const fileInput = document.getElementById('fileInput');
   const file = fileInput.files[0];
 
   if (!file) {
+    alert('Please choose a file to upload.');
     return;
   }
 
   const reader = new FileReader();
   reader.onload = function (e) {
     try {
-      matrices = JSON.parse(e.target.result);
+      const loadedMatrix = JSON.parse(e.target.result);
+
+      if (typeof loadedMatrix === 'object' && Object.keys(loadedMatrix).length > 0) {
+        matrices = { ...matrices, ...loadedMatrix };
+      } else {
+        // Check if matrix with the same name already exists
+        if (matrices[matrixName]) {
+          // If exists, update the existing matrix
+          matrices[matrixName] = loadedMatrix;
+        } else {
+          // If doesn't exist, create a new matrix with the specified name
+          matrices[matrixName] = loadedMatrix;
+        }
+      }
+
       displayMatrices();
     } catch (error) {
       console.error('Error parsing JSON:', error);
@@ -101,6 +136,8 @@ function loadMatricesFromFile(event) {
 
   reader.readAsText(file);
 }
+
+
 
 function downloadMatrices() {
   const data = JSON.stringify(matrices, null, 2);
@@ -116,3 +153,7 @@ function downloadMatrices() {
 
   URL.revokeObjectURL(url);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  displayMatrices();
+});

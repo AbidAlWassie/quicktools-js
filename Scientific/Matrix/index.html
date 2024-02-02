@@ -11,7 +11,7 @@
   <title>Matrix</title>
 </head>
 
-<body class="bg-zinc-800 text-gray-100">
+<body class="bg-zinc-800 text-slate-100">
 
   <div class="container navbar justify-normal items-start">
     <div class="text-sm breadcrumbs">
@@ -57,22 +57,23 @@
 
   <div class="container">
 
-    <div class="row card-holder-mid m2s py-6 px-14 my-10 border-2 border-red-600  rounded-md">
-      <h2 class="text-center mb-4 font-semibold">Matrix</h2>
-      <div class="flex justify-center flex-col">
-        <label for="rows">Rows:</label>
-        <input type="number" id="rows" min="1" value="2">
-      
-        <label for="cols">Columns:</label>
-        <input type="number" id="cols" min="1" value="2">
-      
-        <button onclick="createMatrix()">Create Matrix</button>
-        <input type="file" id="fileInput" accept=".json" onchange="loadMatricesFromFile(event)">
-        <button onclick="downloadMatrices()">Download Matrices</button>
-      </div>
-      
-      <div class="matrix-container" id="matrixContainer"></div>
+    <div>
+      <label for="rows">Rows:</label>
+      <input type="number" id="rows" min="1" value="2">
+    
+      <label for="cols">Columns:</label>
+      <input type="number" id="cols" min="1" value="2">
+    
+      <button onclick="createMatrix()">Create Matrix</button>
+    
+      <label for="matrixName">Matrix Name:</label>
+      <input type="text" id="uploadMatrixName" placeholder="Enter matrix name">
+    
+      <input type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()">
+      <button onclick="downloadMatrices()">Download Matrix</button>
     </div>
+    
+    <div id="matrixContainer"></div>
 
     <p class="text-center mt-10">Copyright ©2023 <a
         class="text-center mt-10 text-blue-500 hover:text-blue-400 font-bold transition-all"

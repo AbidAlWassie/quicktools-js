@@ -4,7 +4,9 @@ function createMatrix() {
   const rows = document.getElementById('rows').value;
   const cols = document.getElementById('cols').value;
 
-  const matrixName = prompt('Enter a name for the matrix (e.g., A, B, C):');
+  const matrixNameInput = document.getElementById('matrixName');
+  const matrixName = matrixNameInput.value.trim().toUpperCase();
+
   if (!matrixName) {
     alert('Matrix name cannot be empty.');
     return;
@@ -94,13 +96,6 @@ function updateMatrix(matrixName, rowIndex, colIndex, value) {
 }
 
 function loadMatrixFromFile() {
-  const matrixNameInput = document.getElementById('uploadMatrixName');
-  const matrixName = matrixNameInput.value.trim().toUpperCase();
-
-  if (!matrixName) {
-    alert('Please enter a matrix name.');
-    return;
-  }
 
   const fileInput = document.getElementById('fileInput');
   const file = fileInput.files[0];

@@ -56,18 +56,18 @@
   </div>
 
   <div class="container">
-
+<!-- Instead of asking in the alert() just use this input dont don't require a name when uploading the json files -->
     <div>
+      <label for="matrixName">Matrix Name:</label>
+      <input type="text" id="matrixName" placeholder="Enter matrix name">
+
       <label for="rows">Rows:</label>
       <input type="number" id="rows" min="1" value="2">
     
       <label for="cols">Columns:</label>
       <input type="number" id="cols" min="1" value="2">
     
-      <button onclick="createMatrix()">Create Matrix</button>
-    
-      <label for="matrixName">Matrix Name:</label>
-      <input type="text" id="uploadMatrixName" placeholder="Enter matrix name">
+      <button class="rounded-sm bg-sky-700 px-2" onclick="createMatrix()">Create Matrix</button>
     
       <input type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()">
       <button onclick="downloadMatrices()">Download Matrix</button>

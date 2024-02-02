@@ -11,7 +11,7 @@
   <title>Matrix</title>
 </head>
 
-<body class="bg-zinc-800 text-slate-100">
+<body class="bg-zinc-800 text-gray-100">
 
   <div class="container navbar justify-normal items-start">
     <div class="text-sm breadcrumbs">
@@ -55,22 +55,24 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container flex flex-col mx-auto">
 <!-- Instead of asking in the alert() just use this input dont don't require a name when uploading the json files -->
-    <div>
+    <div class="">
       <label for="matrixName">Matrix Name:</label>
-      <input type="text" id="matrixName" placeholder="Enter matrix name">
-
+      <input type="text" id="matrixName" placeholder="Matrix Name">
+      <br>
       <label for="rows">Rows:</label>
       <input type="number" id="rows" min="1" value="2">
     
       <label for="cols">Columns:</label>
       <input type="number" id="cols" min="1" value="2">
-    
+      <br>
       <button class="rounded-sm bg-sky-700 px-2" onclick="createMatrix()">Create Matrix</button>
     
-      <input type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()">
-      <button onclick="downloadMatrices()">Download Matrix</button>
+      <input class="block my-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()">
+      
+      <!-- <input type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()"> -->
+      <button class="rounded-sm bg-sky-700 px-2" onclick="downloadMatrices()">Download Matrix</button>
     </div>
     
     <div id="matrixContainer"></div>

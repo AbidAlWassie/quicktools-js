@@ -1,3 +1,5 @@
+
+
 /* body {
   font-family: 'Arial', sans-serif;
 }
@@ -30,3 +32,15 @@ th, td {
 th {
   background-color: #f2f2f2;
 } */
+
+input#rows, input#cols {
+  text-align: center;
+  min-width: 24px;
+  max-width: 40px;
+}
+
+input[type=text] {
+  text-align: center;
+  min-width: 24px;
+  max-width: 40px;
+}

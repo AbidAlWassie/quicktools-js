@@ -35,6 +35,7 @@ th {
 
 input {
   background-color: rgb(36, 42, 49);
+  color: rgb(181, 191, 202);
 }
 
 input#rows, input#cols {

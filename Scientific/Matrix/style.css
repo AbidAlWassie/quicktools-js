@@ -33,7 +33,7 @@ th {
   background-color: #f2f2f2;
 } */
 
-input {
+input, select {
   background-color: rgb(51, 56, 61);
   color: rgb(181, 191, 202);
 }

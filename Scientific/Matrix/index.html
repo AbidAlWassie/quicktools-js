@@ -57,7 +57,7 @@
 
   <div class="container flex flex-col mx-auto">
 <!-- Instead of asking in the alert() just use this input dont don't require a name when uploading the json files -->
-    <div class="">
+    <div class="hell">
       <label for="matrixName">Matrix Name:</label>
       <input type="text" id="matrixName" placeholder="Name">
       <br>
@@ -76,6 +76,25 @@
     </div>
     
     <div id="matrixContainer"></div>
+
+    <div>
+      <label for="matrixSelect">Select Matrix 1:</label>
+      <select id="matrixSelect1"></select>
+      
+      <label for="matrixSelect">Select Matrix 2:</label>
+      <select id="matrixSelect2"></select>
+      
+      <label for="operationSelect">Select Operation:</label>
+      <select id="operationSelect">
+        <option value="multiply">Multiply</option>
+        <option value="transpose">Transpose</option>
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+      </select>
+      
+      <button onclick="performMatrixOperation()">Perform Operation</button>
+    </div>
+    
 
     <p class="text-center mt-10">Copyright ©2023 <a
         class="text-center mt-10 text-blue-500 hover:text-blue-400 font-bold transition-all"

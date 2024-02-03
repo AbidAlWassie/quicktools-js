@@ -93,37 +93,6 @@ function createEditableTable(matrix, matrixName) {
   return table;
 }
 
-// Add this function to your script.js file
-function multiplyMatrices(matrixName) {
-  const matrixA = matrices[matrixName];
-  const matrixB = matrices['B']; // Assuming you want to multiply with matrix B
-
-  if (!matrixA || !matrixB) {
-    alert('Matrices A and B must be defined for multiplication.');
-    return;
-  }
-
-  const resultMatrix = [];
-
-  for (let i = 0; i < matrixA.length; i++) {
-    resultMatrix.push([]);
-    for (let j = 0; j < matrixB[0].length; j++) {
-      let sum = 0;
-      for (let k = 0; k < matrixA[0].length; k++) {
-        sum += matrixA[i][k] * matrixB[k][j];
-      }
-      resultMatrix[i][j] = sum;
-    }
-  }
-
-  // Assuming you want to store the result in a new matrix C
-  matrices['C'] = resultMatrix;
-
-  // Refresh the matrices display
-  displayMatrices();
-}
-
-
 // Update the updateMatrixSelectOptions function to create two select elements
 function updateMatrixSelectOptions() {
   const matrixSelect1 = document.getElementById('matrixSelect1');
@@ -147,7 +116,7 @@ function updateMatrixSelectOptions() {
   }
 }
 
-// Modify the performMatrixOperation function to use two selected matrices
+// Update the performMatrixOperation function to handle matrix multiplication
 function performMatrixOperation() {
   const matrixNameSelect1 = document.getElementById('matrixSelect1');
   const matrixNameSelect2 = document.getElementById('matrixSelect2');
@@ -179,6 +148,42 @@ function performMatrixOperation() {
       alert('Invalid operation.');
   }
 }
+
+// Modify the multiplyMatrices function to take two matrix names
+function multiplyMatrices(matrixName1, matrixName2) {
+  const matrixA = matrices[matrixName1];
+  const matrixB = matrices[matrixName2];
+
+  if (!matrixA || !matrixB) {
+    alert('Selected matrices must be defined for multiplication.');
+    return;
+  }
+
+  if (matrixA[0].length !== matrixB.length) {
+    alert('Number of columns in Matrix A must be equal to the number of rows in Matrix B for multiplication.');
+    return;
+  }
+
+  const resultMatrix = [];
+
+  for (let i = 0; i < matrixA.length; i++) {
+    resultMatrix.push([]);
+    for (let j = 0; j < matrixB[0].length; j++) {
+      let sum = 0;
+      for (let k = 0; k < matrixA[0].length; k++) {
+        sum += matrixA[i][k] * matrixB[k][j];
+      }
+      resultMatrix[i][j] = sum;
+    }
+  }
+
+  // Assuming you want to store the result in a new matrix C
+  matrices['C'] = resultMatrix;
+
+  // Refresh the matrices display
+  displayMatrices();
+}
+
 
 
 function updateMatrix(matrixName, rowIndex, colIndex, value) {

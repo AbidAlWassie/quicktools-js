@@ -136,13 +136,13 @@ function performMatrixOperation() {
       multiplyMatrices(selectedMatrixName1, selectedMatrixName2);
       break;
     case 'transpose':
-      // Call transpose function here
+      transposeMatrix(selectedMatrixName1)
       break;
     case 'add':
-      // Call add function here
+      addMatrices(selectedMatrixName1, selectedMatrixName2);
       break;
     case 'subtract':
-      // Call subtract function here
+      subtractMatrices(selectedMatrixName1, selectedMatrixName2);
       break;
     default:
       alert('Invalid operation.');
@@ -183,6 +183,90 @@ function multiplyMatrices(matrixName1, matrixName2) {
   // Refresh the matrices display
   displayMatrices();
 }
+
+// Function to transpose a matrix
+function transposeMatrix(matrixName) {
+  const matrix = matrices[matrixName];
+
+  if (!matrix) {
+    alert('Selected matrix must be defined for transposition.');
+    return;
+  }
+
+  const transposedMatrix = [];
+
+  // Create an empty matrix with swapped dimensions
+  for (let i = 0; i < matrix[0].length; i++) {
+    transposedMatrix.push([]);
+  }
+
+  // Fill the transposed matrix with values from the original matrix
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      transposedMatrix[j][i] = matrix[i][j];
+    }
+  }
+
+  // Store the transposed matrix with a new name, assuming you want to prefix 'T' to the original matrix name
+  matrices[`T${matrixName}`] = transposedMatrix;
+
+  // Refresh the matrices display
+  displayMatrices();
+}
+
+// Function to add two matrices
+function addMatrices(matrixNameA, matrixNameB) {
+  const matrixA = matrices[matrixNameA];
+  const matrixB = matrices[matrixNameB];
+
+  if (!matrixA || !matrixB || matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
+    alert('Matrices A and B must be defined and have the same dimensions for addition.');
+    return;
+  }
+
+  const resultMatrix = [];
+
+  for (let i = 0; i < matrixA.length; i++) {
+    resultMatrix.push([]);
+    for (let j = 0; j < matrixA[0].length; j++) {
+      resultMatrix[i][j] = matrixA[i][j] + matrixB[i][j];
+    }
+  }
+
+  // Store the result in a new matrix C
+  matrices['C'] = resultMatrix;
+
+  // Refresh the matrices display
+  displayMatrices();
+}
+
+// Function to subtract matrix B from matrix A
+function subtractMatrices(matrixNameA, matrixNameB) {
+  const matrixA = matrices[matrixNameA];
+  const matrixB = matrices[matrixNameB];
+
+  if (!matrixA || !matrixB || matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
+    alert('Matrices A and B must be defined and have the same dimensions for subtraction.');
+    return;
+  }
+
+  const resultMatrix = [];
+
+  for (let i = 0; i < matrixA.length; i++) {
+    resultMatrix.push([]);
+    for (let j = 0; j < matrixA[0].length; j++) {
+      resultMatrix[i][j] = matrixA[i][j] - matrixB[i][j];
+    }
+  }
+
+  // Store the result in a new matrix C
+  matrices['C'] = resultMatrix;
+
+  // Refresh the matrices display
+  displayMatrices();
+}
+
+
 
 
 

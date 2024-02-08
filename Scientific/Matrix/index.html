@@ -55,22 +55,32 @@
     </div>
   </div>
 
+
   <div class="container flex flex-col mx-auto">
-<!-- Instead of asking in the alert() just use this input dont don't require a name when uploading the json files -->
+
+    <div class="mt-10" id="log"></div>
+
     <div class="CreateMatrix">
-      <h2 class="font-bold text-xl">Create Matrix</h2>
+      <h2 class="font-bold text-xl mb-2">Create Matrix</h2>
       <label for="matrixName">Matrix Name:</label>
       <input type="text" id="matrixName" placeholder="Name">
       <br>
-      <label for="rows">Rows:</label>
-      <input type="number" id="rows" min="1" value="2">
-    
-      <label for="cols">Columns:</label>
-      <input type="number" id="cols" min="1" value="2">
+
+      <div class="mb-2 mt-1">
+        <label for="rows">Rows:</label>
+        <input type="number" id="rows" min="1" value="2">
+      
+        <label for="cols">Columns:</label>
+        <input type="number" id="cols" min="1" value="2">
+      </div>
+
+
       <br>
-      <button class="rounded-sm bg-sky-700 px-2" onclick="createMatrix()">Create Matrix</button>
+      <button class="rounded-sm bg-sky-700 px-2 mb-2" onclick="createMatrix()">Create Matrix</button>
     
-      <input class="block my-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()">
+      
+      <p class=" my-2">or Upload</p>
+      <input class="block mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()">
       
       <!-- <input type="file" id="fileInput" accept=".json" onchange="loadMatrixFromFile()"> -->
       <button class="rounded-sm bg-sky-700 px-2" onclick="downloadMatrices()">Download Matrix</button>
@@ -101,9 +111,8 @@
       <button class="rounded-sm bg-sky-700 px-2" onclick="performMatrixOperation()">Perform Operation</button>
     </div>
 
-    <div id="determinantResult"></div>
+    <div id="Ans" class="my-5"></div>
 
-    
 
     <p class="text-center mt-10">Copyright ©2024 <a
         class="text-center mt-10 text-blue-500 hover:text-blue-400 font-bold transition-all"

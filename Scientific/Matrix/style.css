@@ -49,3 +49,38 @@ input[type=text] {
   min-width: 24px;
   max-width: 45px;
 }
+
+.log-box {
+  border: 1px solid #666;
+  padding: 10px;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #333;
+}
+
+.log-item {
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.log-item.success {
+  background-color: #155c2b;
+  color: #7bc3a3;
+}
+
+.log-item.info {
+  background-color: #2a4365;
+  color: #90cdf4;
+}
+
+.log-item.warning {
+  background-color: #9e7119;
+  color: #ffedbc;
+}
+
+.log-item.error {
+  background-color: #611a15;
+  color: #f09383;
+}

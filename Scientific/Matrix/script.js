@@ -1,5 +1,37 @@
 let matrices = {};
 
+function logMessage(message, type) {
+  const logBox = document.getElementById('log');
+  
+  // Clear previous logs
+  logBox.innerHTML = '';
+
+  // Create log item
+  const logItem = document.createElement('div');
+  logItem.textContent = message;
+  logItem.classList.add('log-item', type);
+  
+  // Append log item to log box
+  logBox.appendChild(logItem);
+}
+
+function logAns(message, type) {
+  const logBox = document.getElementById('Ans');
+  
+  // Clear previous logs
+  logBox.innerHTML = '';
+
+  // Create log item
+  const logItem = document.createElement('div');
+  logItem.textContent = message;
+  logItem.classList.add('log-item', type);
+  
+  // Append log item to log box
+  logBox.appendChild(logItem);
+}
+
+
+
 function createMatrix() {
   const rows = document.getElementById('rows').value;
   const cols = document.getElementById('cols').value;
@@ -8,7 +40,7 @@ function createMatrix() {
   const matrixName = matrixNameInput.value.trim().toUpperCase();
 
   if (!matrixName) {
-    alert('Matrix name cannot be empty.');
+    logMessage('Matrix name cannot be empty.', 'error');
     return;
   }
 
@@ -127,7 +159,7 @@ function performMatrixOperation() {
   const selectedOperation = operationSelect.value;
 
   if (!selectedMatrixName1 || !selectedMatrixName2 || !selectedOperation) {
-    alert('Please select two matrices and an operation.');
+    logMessage('Please select two matrices and an operation.', 'error');
     return;
   }
 
@@ -148,7 +180,7 @@ function performMatrixOperation() {
       subtractMatrices(selectedMatrixName1, selectedMatrixName2);
       break;
     default:
-      alert('Invalid operation.');
+      logMessage('Invalid operation.', 'error');
   }
 }
 
@@ -159,12 +191,12 @@ function multiplyMatrices(matrixName1, matrixName2) {
   const matrixB = matrices[matrixName2];
 
   if (!matrixA || !matrixB) {
-    alert('Selected matrices must be defined for multiplication.');
+    logMessage('Selected matrices must be defined for multiplication.', 'error');
     return;
   }
 
   if (matrixA[0].length !== matrixB.length) {
-    alert('Number of columns in Matrix A must be equal to the number of rows in Matrix B for multiplication.');
+    logMessage('Number of columns in Matrix A must be equal to the number of rows in Matrix B for multiplication.', 'error');
     return;
   }
 
@@ -193,7 +225,7 @@ function transposeMatrix(matrixName) {
   const matrix = matrices[matrixName];
 
   if (!matrix) {
-    alert('Selected matrix must be defined for transposition.');
+    logMessage('Selected matrix must be defined for transposition.', 'error');
     return;
   }
 
@@ -221,7 +253,7 @@ function transposeMatrix(matrixName) {
 
 function determinant(matrixName) {
   const matrix = matrices[matrixName];
-  const resultElement = document.getElementById('determinantResult');
+  const resultElement = document.getElementById('Ans');
 
   if (!matrix || !resultElement) {
     console.error('Matrix or result element not found.');
@@ -232,13 +264,13 @@ function determinant(matrixName) {
 
   // Check if the matrix is square
   if (n !== matrix[0].length) {
-    resultElement.innerHTML = 'The matrix must be square (n x n) for finding the determinant.';
+    logAns('The matrix must be square (n x n) for finding the determinant.', 'warning');
     return;
   }
 
   // Base case: for 1x1 matrix, determinant is the only element
   if (n === 1) {
-    resultElement.innerHTML = 'Determinant of a 1x1 matrix is the only element: ' + matrix[0][0];
+    logAns('Determinant of a 1x1 matrix is the only element: ' + matrix[0][0], 'info');
     return;
   }
 
@@ -268,7 +300,7 @@ function determinant(matrixName) {
   det = determinantByLaplace(matrix, n);
 
   // Update the determinant result element
-  resultElement.innerHTML = 'Determinant: ' + det;
+  logAns('Determinant: ' +  det, 'success');
 }
 
 
@@ -278,7 +310,7 @@ function addMatrices(matrixNameA, matrixNameB) {
   const matrixB = matrices[matrixNameB];
 
   if (!matrixA || !matrixB || matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
-    alert('Matrices A and B must be defined and have the same dimensions for addition.');
+    logMessage('Matrices A and B must be defined and have the same dimensions for addition.', 'error');
     return;
   }
 
@@ -304,7 +336,7 @@ function subtractMatrices(matrixNameA, matrixNameB) {
   const matrixB = matrices[matrixNameB];
 
   if (!matrixA || !matrixB || matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
-    alert('Matrices A and B must be defined and have the same dimensions for subtraction.');
+    logMessage('Matrices A and B must be defined and have the same dimensions for subtraction.', 'error');
     return;
   }
 
@@ -337,7 +369,7 @@ function loadMatrixFromFile() {
   const file = fileInput.files[0];
 
   if (!file) {
-    alert('Please choose a file to upload.');
+    logMessage('Please choose a file to upload.', 'error');
     return;
   }
 

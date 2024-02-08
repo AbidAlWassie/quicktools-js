@@ -87,18 +87,22 @@
       <label for="matrixSelect">Select Matrix 2:</label>
       <select id="matrixSelect2"></select>
       <br>
-      
+      <!-- html -->
       <label for="operationSelect">Select Operation:</label>
       <select id="operationSelect" class=" mb-2">
         <option value="multiply">Multiply</option>
         <option value="add">Add</option>
         <option value="subtract">Subtract</option>
         <option value="transpose">Transpose | Matrix 1</option>
+        <option value="determinant">Determinant | Matrix 1</option>
       </select>
       <br>
       
       <button class="rounded-sm bg-sky-700 px-2" onclick="performMatrixOperation()">Perform Operation</button>
     </div>
+
+    <div id="determinantResult"></div>
+
     
 
     <p class="text-center mt-10">Copyright ©2024 <a

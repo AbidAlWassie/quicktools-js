@@ -138,6 +138,9 @@ function performMatrixOperation() {
     case 'transpose':
       transposeMatrix(selectedMatrixName1)
       break;
+    case 'determinant':
+      determinant(selectedMatrixName1); // Pass the selected matrix name to the determinant function
+      break;
     case 'add':
       addMatrices(selectedMatrixName1, selectedMatrixName2);
       break;
@@ -148,6 +151,7 @@ function performMatrixOperation() {
       alert('Invalid operation.');
   }
 }
+
 
 // Modify the multiplyMatrices function to take two matrix names
 function multiplyMatrices(matrixName1, matrixName2) {
@@ -213,6 +217,60 @@ function transposeMatrix(matrixName) {
   // Refresh the matrices display
   displayMatrices();
 }
+
+
+function determinant(matrixName) {
+  const matrix = matrices[matrixName];
+  const resultElement = document.getElementById('determinantResult');
+
+  if (!matrix || !resultElement) {
+    console.error('Matrix or result element not found.');
+    return;
+  }
+
+  const n = matrix.length;
+
+  // Check if the matrix is square
+  if (n !== matrix[0].length) {
+    resultElement.innerHTML = 'The matrix must be square (n x n) for finding the determinant.';
+    return;
+  }
+
+  // Base case: for 1x1 matrix, determinant is the only element
+  if (n === 1) {
+    resultElement.innerHTML = 'Determinant of a 1x1 matrix is the only element: ' + matrix[0][0];
+    return;
+  }
+
+  let det = 0;
+
+  // Recursive function to find determinant by Laplace expansion
+  const determinantByLaplace = (matrix, n) => {
+    // Base case: for 2x2 matrix, use the formula ad - bc
+    if (n === 2) {
+      return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+    }
+
+    let result = 0;
+
+    for (let j = 0; j < n; j++) {
+      const sign = (j % 2 === 0) ? 1 : -1;
+      const submatrix = [];
+      for (let i = 1; i < n; i++) {
+        submatrix.push(matrix[i].filter((_, index) => index !== j));
+      }
+      result += sign * matrix[0][j] * determinantByLaplace(submatrix, n - 1);
+    }
+
+    return result;
+  };
+
+  det = determinantByLaplace(matrix, n);
+
+  // Update the determinant result element
+  resultElement.innerHTML = 'Determinant: ' + det;
+}
+
 
 // Function to add two matrices
 function addMatrices(matrixNameA, matrixNameB) {

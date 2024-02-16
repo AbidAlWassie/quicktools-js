@@ -1,7 +1,7 @@
 // File name: script.js
 
 function calculatePeriodicity() {
-  const functionSelect = document.getElementById('functionSelect');
+  const functionSelect = document.getElementById('functionSelectPeriodicity');
   const selectedFunction = functionSelect.value;
   const amplitude = parseFloat(document.getElementById('amplitude').value);
   const frequency = parseFloat(document.getElementById('frequency').value);
@@ -117,36 +117,29 @@ function calculateTan(angle) {
   const positiveAngle = normalizedAngle >= 0 ? normalizedAngle : 360 + normalizedAngle;
 
   // Define known solutions for certain angles
-  const solutions = {};
-
-  // Add solutions based on user input
-  if (positiveAngle === 15) {
-    solutions[positiveAngle] = { result: 2 - Math.sqrt(3), steps: ["tan(15)"] };
-  } else if (positiveAngle === 285) {
-    solutions[positiveAngle] = { result: -2 + Math.sqrt(3), steps: ["tan(90*3 - 75)"] };
-  } else {
-    // For any other angle, dynamically calculate the solution
-    let steps = [`tan(${positiveAngle})`];
-    if (positiveAngle > 90) {
-      const n = Math.floor((positiveAngle - 90) / 90);
-      const remainder = positiveAngle - n * 90;
-      steps.push(`tan(90*${n} + ${remainder})`);
-    }
-    solutions[positiveAngle] = { result: Math.tan(positiveAngle * Math.PI / 180), steps: steps };
-  }
+  const solutions = {
+    15: { result: 2 - Math.sqrt(3), steps: "tan(15)" }, // Solution for tan(15)
+    195: { result: 2 - Math.sqrt(3), steps: "tan(90*2 + 15) = tan(15)" }, // Solution for tan(195)
+    285: { result: -2 + Math.sqrt(3), steps: "tan(90*3 - 75) = tan(-75)" }, // Solution for tan(285)
+    // Add more known solutions here as needed
+  };
 
   // Check if the angle matches one of the known solutions
   if (solutions.hasOwnProperty(positiveAngle)) {
-    const { result, steps } = solutions[positiveAngle];
-    const stepsString = steps.join(', ');
-    return `Steps: ${stepsString}, Result: ${result}`;
+    let steps = [];
+    for (const angleKey in solutions) {
+      if (Object.hasOwnProperty.call(solutions, angleKey)) {
+        const { result, steps: step } = solutions[angleKey];
+        steps.push(`${step} = ${result}`);
+      }
+    }
+    const result = solutions[positiveAngle].result;
+    return `Steps: ${steps.join(", ")}, Result: ${result}`;
   } else {
     logError('Angle not supported.');
     return null;
   }
 }
-
-
 
 
 function displayResult(result) {

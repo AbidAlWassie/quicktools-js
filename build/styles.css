@@ -790,19 +790,6 @@ html {
           text-decoration-line: underline;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  padding: var(--navbar-padding, 0.5rem);
-  min-height: 4rem;
-  width: 100%;
-}
-
-:where(.navbar > *:not(script, style)) {
-  display: inline-flex;
-  align-items: center;
-}
-
 .select {
   display: inline-flex;
   cursor: pointer;
@@ -1257,10 +1244,6 @@ html {
   margin-top: 2.5rem;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -1313,10 +1296,6 @@ html {
   align-items: flex-start;
 }
 
-.justify-center {
-  justify-content: center;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1327,10 +1306,6 @@ html {
 
 .rounded-lg {
   border-radius: 0.5rem;
-}
-
-.rounded {
-  border-radius: 0.25rem;
 }
 
 .border {
@@ -1362,14 +1337,14 @@ html {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .stroke-current {
@@ -1390,14 +1365,9 @@ html {
   padding-right: 0.5rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .py-2 {
@@ -1405,9 +1375,9 @@ html {
   padding-bottom: 0.5rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .text-center {
@@ -1427,11 +1397,6 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {
@@ -1478,11 +1443,6 @@ html {
 .hover\:text-blue-400:hover {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
-}
-
-.focus\:border-blue-500:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 
 .focus\:border-blue-300:focus {

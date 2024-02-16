@@ -1,5 +1,15 @@
 let matrices = {};
 
+function autoScaleInput() {
+  console.log("autoScaleInput: Not Completed");
+  // // Get the input element
+  // var inputArea = document.querySelectorAll('input');
+  // // Get the width of the text in the input
+  // var textWidth = inputArea.scrollWidth;
+  // // Set the input width
+  // inputArea.style.width = textWidth + 'px';
+}
+
 function logMessage(message, type) {
   const logBox = document.getElementById('log');
   

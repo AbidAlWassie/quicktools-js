@@ -46,15 +46,15 @@ function logError(message) {
 
 
 function performTrigonometricOperation() {
-  const angleInput = document.getElementById('angleInput').value;
-  const functionSelect = document.getElementById('functionSelect').value;
+  const angleInput = document.getElementById('angleInput');
+  const functionSelect = document.getElementById('functionSelectCalculation').value;
 
-  if (!angleInput || isNaN(angleInput)) {
-    logTrigError('Please enter a valid angle.');
+  if (!angleInput || isNaN(angleInput.value)) {
+    logError('Please enter a valid angle.');
     return;
   }
 
-  const angle = parseFloat(angleInput);
+  const angle = parseFloat(angleInput.value);
 
   let result;
 
@@ -69,7 +69,7 @@ function performTrigonometricOperation() {
       result = calculateTan(angle);
       break;
     default:
-      logTrigError('Invalid trigonometric function selected.');
+      logError('Invalid trigonometric function selected.');
       return;
   }
 
@@ -116,27 +116,42 @@ function calculateTan(angle) {
   const normalizedAngle = angle % 360;
   const positiveAngle = normalizedAngle >= 0 ? normalizedAngle : 360 + normalizedAngle;
 
+  // Define known solutions for certain angles
+  const solutions = {};
+
+  // Add solutions based on user input
+  if (positiveAngle === 15) {
+    solutions[positiveAngle] = { result: 2 - Math.sqrt(3), steps: ["tan(15)"] };
+  } else if (positiveAngle === 285) {
+    solutions[positiveAngle] = { result: -2 + Math.sqrt(3), steps: ["tan(90*3 - 75)"] };
+  } else {
+    // For any other angle, dynamically calculate the solution
+    let steps = [`tan(${positiveAngle})`];
+    if (positiveAngle > 90) {
+      const n = Math.floor((positiveAngle - 90) / 90);
+      const remainder = positiveAngle - n * 90;
+      steps.push(`tan(90*${n} + ${remainder})`);
+    }
+    solutions[positiveAngle] = { result: Math.tan(positiveAngle * Math.PI / 180), steps: steps };
+  }
+
   // Check if the angle matches one of the known solutions
-  if (positiveAngle === 210) {
-    return 1 / 3; // Using the solution for tan(210)
-  } else if (positiveAngle === 765) {
-    return Math.sin(45 * Math.PI / 180) / Math.cos(45 * Math.PI / 180); // Using the solution for tan(765)
+  if (solutions.hasOwnProperty(positiveAngle)) {
+    const { result, steps } = solutions[positiveAngle];
+    const stepsString = steps.join(', ');
+    return `Steps: ${stepsString}, Result: ${result}`;
   } else {
     logError('Angle not supported.');
     return null;
   }
 }
 
+
+
+
 function displayResult(result) {
   const resultElement = document.getElementById('result');
   if (resultElement) {
-    resultElement.innerHTML = `<p class="result-text">Result: ${result}</p>`;
-  }
-}
-
-function logTrigError(message) {
-  const logBox = document.getElementById('logBox');
-  if (logBox) {
-    logBox.innerHTML = `<div class="log-item error">${message}</div>`;
+    resultElement.innerHTML = `<p class="text-blue-500">Result: ${result}</p>`;
   }
 }

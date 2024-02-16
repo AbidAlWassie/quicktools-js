@@ -33,6 +33,18 @@ th {
   background-color: #f2f2f2;
 } */
 
+/* Hide number input spinner arrows */
+.matrix-input[type='number']::-webkit-inner-spin-button,
+.matrix-input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.matrix-input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+
 .container {
   padding: 0 0;
 }

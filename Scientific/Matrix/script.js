@@ -85,7 +85,7 @@ function displayMatrices() {
   for (const [name, matrix] of Object.entries(matrices)) {
     const matrixElement = document.createElement('div');
     matrixElement.textContent = name;
-    matrixElement.classList.add('dark:bg-gray-700', 'p-4', 'rounded-lg', 'max-w-md', 'mx-auto', 'my-4'); // Tailwind classes for background, padding, and rounded corners
+    matrixElement.classList.add('dark:bg-gray-700', 'p-4', 'rounded-lg', 'max-w-md', 'mx-auto', 'my-4', 'text-center'); // Tailwind classes for background, padding, and rounded corners
 
     const table = createEditableTable(matrix, name);
     matrixElement.appendChild(table);
@@ -98,7 +98,7 @@ function displayMatrices() {
 
 function createEditableTable(matrix, matrixName) {
   const table = document.createElement('table');
-  table.className = 'output-matrix-table';
+  table.className = 'output-matrix-table mx-auto';
 
   // Check if matrix is undefined or does not have valid length
   if (!matrix || !matrix.length || !matrix[0] || !matrix[0].length) {
@@ -108,10 +108,11 @@ function createEditableTable(matrix, matrixName) {
 
   // Create table headers
   const thead = document.createElement('thead');
-  thead.className = 'output-matrix-thead';
+  thead.className = 'output-matrix-thead table-head bg-[#285272]';
   const headerRow = document.createElement('tr');
   for (let i = 0; i < matrix[0].length; i++) {
     const th = document.createElement('th');
+    th.className = 'border-solid border-2 border-sky-500';
     th.innerHTML = `C<sub>${i + 1}</sub>`;
     headerRow.appendChild(th);
   }
@@ -120,15 +121,17 @@ function createEditableTable(matrix, matrixName) {
 
   // Create table body with editable cells
   const tbody = document.createElement('tbody');
+  tbody.className = 'table-body bg-slate-600';
   for (let i = 0; i < matrix.length; i++) {
     const row = document.createElement('tr');
     for (let j = 0; j < matrix[i].length; j++) {
       const cell = document.createElement('td');
+      cell.className = 'border-solid border-2 border-sky-500';
       const input = document.createElement('input');
       input.type = 'text';
       input.value = matrix[i][j];
       // Add classes to the input element
-      input.className = 'matrix-input dark:bg-gray-800 p-2 rounded-lg text-center w-16 mx-auto m-2 mx-2';
+      input.className = 'matrix-input dark:bg-gray-700 p-2 rounded-lg text-center w-16 mx-auto m-2 mx-2';
       input.addEventListener('input', (event) => updateMatrix(matrixName, i, j, event.target.value));
       cell.appendChild(input);
       row.appendChild(cell);
@@ -139,6 +142,7 @@ function createEditableTable(matrix, matrixName) {
 
   return table;
 }
+
 
 
 

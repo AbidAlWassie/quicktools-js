@@ -149,9 +149,16 @@ function displayResult(result) {
   }
 }
 
+
 const canvas = document.getElementById('trigCircle');
+
+// Ensure the canvas is square
+const size = Math.min(window.innerWidth, window.innerHeight) * 0.8;
+canvas.width = size;
+canvas.height = size;
+
 const ctx = canvas.getContext('2d');
-const radius = canvas.width / 2;
+const radius = size / 2;
 
 ctx.translate(radius, radius);
 
@@ -163,17 +170,18 @@ ctx.stroke();
 
 // Draw the 90-degree intervals
 for (let angle = 0; angle < 360; angle += 90) {
-  const radian = angle * Math.PI / 180;
-  const x = Math.cos(radian) * radius;
-  const y = Math.sin(radian) * radius;
+  const radian = angle * Math.PI / 180; // Adjust for counterclockwise rotation
+  const x = Math.cos(radian) * (radius - 5); // Adjust distance from the center
+  const y = Math.sin(radian) * (radius - 5); // Adjust distance from the center
 
   ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(0, 0);
+  ctx.moveTo(0, 0);
+  ctx.lineTo(x, -y); // Adjust text position closer to the center
   ctx.strokeStyle = '#3198cc'; // Set stroke color to blue
   ctx.stroke();
 
   ctx.fillStyle = '#3198cc'; // Set text color to blue
-  ctx.fillText(`${angle}°`, x + 10, y - 10);
+  ctx.fillText(`${angle}°`, 0.9 * x - 25, -0.9 * y - 10); // Adjust text position slightly to the left
 }
+
 

@@ -148,3 +148,32 @@ function displayResult(result) {
     resultElement.innerHTML = `<p class="text-blue-500">Result: ${result}</p>`;
   }
 }
+
+const canvas = document.getElementById('trigCircle');
+const ctx = canvas.getContext('2d');
+const radius = canvas.width / 2;
+
+ctx.translate(radius, radius);
+
+// Draw the circle
+ctx.beginPath();
+ctx.arc(0, 0, radius - 5, 0, 2 * Math.PI);
+ctx.strokeStyle = '#3198cc'; // Set stroke color to blue
+ctx.stroke();
+
+// Draw the 90-degree intervals
+for (let angle = 0; angle < 360; angle += 90) {
+  const radian = angle * Math.PI / 180;
+  const x = Math.cos(radian) * radius;
+  const y = Math.sin(radian) * radius;
+
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(0, 0);
+  ctx.strokeStyle = '#3198cc'; // Set stroke color to blue
+  ctx.stroke();
+
+  ctx.fillStyle = '#3198cc'; // Set text color to blue
+  ctx.fillText(`${angle}°`, x + 10, y - 10);
+}
+

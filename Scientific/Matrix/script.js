@@ -270,7 +270,7 @@ function transposeMatrix(matrixName) {
   }
 
   // Store the transposed matrix with a new name, assuming you want to prefix 'T' to the original matrix name
-  matrices[`T${matrixName}`] = transposedMatrix;
+  matrices[`Trans(${matrixName})`] = transposedMatrix;
 
   // Refresh the matrices display
   displayMatrices();
@@ -386,7 +386,7 @@ function cofactorMatrix(matrixName) {
   }
 
   // Store the cofactor matrix with a new name, assuming you want to prefix 'Cof' to the original matrix name
-  matrices[`Cof${matrixName}`] = cofactorMatrix;
+  matrices[`Cof(${matrixName})`] = cofactorMatrix;
 
   // Refresh the matrices display
   displayMatrices();

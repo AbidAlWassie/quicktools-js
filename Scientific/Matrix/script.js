@@ -238,8 +238,9 @@ function multiplyMatrices(matrixName1, matrixName2) {
     }
   }
 
-  // Assuming you want to store the result in a new matrix C
-  matrices['C'] = resultMatrix;
+  // New Matrix Name
+  // matrices['C'] = resultMatrix;
+  matrices[`M(${matrixName1}${matrixName2})`] = resultMatrix;
 
   // Refresh the matrices display
   displayMatrices();

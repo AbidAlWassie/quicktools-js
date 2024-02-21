@@ -62,6 +62,8 @@
 
     <div class="mt-4" id="log"></div>
 
+
+    <!-- Create Matrix ||START|| -->
     <div class="CreateMatrix max-w-md mx-auto bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-4">
       <div class="w-full">
           <h2 class="font-bold text-xl mb-2">Create Matrix</h2>
@@ -88,7 +90,10 @@
   
       <button class="rounded-md bg-sky-700 px-4 py-2 text-white focus:outline-none" onclick="downloadMatrices()">Download Matrix</button>
   </div>
+  <!-- Create Matrix ||END|| -->
   
+
+  <!-- Matrix Display Area ||START|| -->
   <div id="matrixContainer"></div>
 
   <div id="matrixContainerTest" class="dumpMatrix text-center hidden">
@@ -96,34 +101,42 @@
     <tbody class="table-body bg-slate-600"><tr><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td></tr><tr><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td></tr><tr><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td><td class="border-solid border-2 border-gray-700"><input value="0" type="text" class="matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2"></td></tr></tbody>
   </table></div>
 </div>
-  
+  <!-- Matrix Display Area ||End|| -->
 
+
+  <!-- Matrix Operations ||Start|| -->
   <div class="MatrixOperations max-w-md mx-auto bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-4 my-4">
     <h2 class="font-bold text-xl mb-2">Matrix Operations</h2>
     <div class="mb-2">
-        <label for="matrixSelect" class="block">Select Matrix 1:</label>
-        <select id="matrixSelect1" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-100">
-            <!-- Options will be dynamically added -->
-        </select>
+      <label for="matrixSelect" class="block">Select Matrix 1:</label>
+      <select id="matrixSelect1"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-100">
+        <!-- Options will be dynamically added -->
+      </select>
     </div>
     <div class="mb-2">
-        <label for="matrixSelect" class="block">Select Matrix 2:</label>
-        <select id="matrixSelect2" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-100">
-            <!-- Options will be dynamically added -->
-        </select>
+      <label for="matrixSelect" class="block">Select Matrix 2:</label>
+      <select id="matrixSelect2"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-100">
+        <!-- Options will be dynamically added -->
+      </select>
     </div>
     <div class="mb-2">
-        <label for="operationSelect" class="block">Select Operation:</label>
-        <select id="operationSelect" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-100">
-            <option value="multiply">Multiply</option>
-            <option value="add">Add</option>
-            <option value="subtract">Subtract</option>
-            <option value="transpose">Transpose | Matrix 1</option>
-            <option value="determinant">Determinant | Matrix 1</option>
-        </select>
+      <label for="operationSelect" class="block">Select Operation:</label>
+      <select id="operationSelect"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-600 dark:border-gray-600 dark:text-gray-100">
+        <option value="multiply">Multiply</option>
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="transpose">Transpose of Matrix 1</option>
+        <option value="determinant">Determinant of Matrix 1</option>
+        <option value="cofactor">Co-factor of Matrix 1</option>
+      </select>
     </div>
-    <button class="rounded-md bg-sky-700 px-4 py-2 text-white focus:outline-none" onclick="performMatrixOperation()">Perform Operation</button>
-</div>
+    <button class="rounded-md bg-sky-700 px-4 py-2 text-white focus:outline-none"
+      onclick="performMatrixOperation()">Perform Operation</button>
+  </div>
+  <!-- Matrix Operations ||End|| -->
 
 
     <div id="Ans" class="my-5"></div>

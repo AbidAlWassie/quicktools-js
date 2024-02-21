@@ -195,6 +195,9 @@ function performMatrixOperation() {
     case 'determinant':
       determinant(selectedMatrixName1); // Pass the selected matrix name to the determinant function
       break;
+    case 'cofactor':
+      cofactorMatrix(selectedMatrixName1);
+      break;
     case 'add':
       addMatrices(selectedMatrixName1, selectedMatrixName2);
       break;
@@ -325,6 +328,72 @@ function determinant(matrixName) {
   logAns('Determinant: ' +  det, 'success');
 }
 
+function cofactorMatrix(matrixName) {
+  const matrix = matrices[matrixName];
+  const resultElement = document.getElementById('Ans');
+
+  if (!matrix || !resultElement) {
+    console.error('Matrix or result element not found.');
+    return;
+  }
+
+  const n = matrix.length;
+
+  // Check if the matrix is square
+  if (n !== matrix[0].length) {
+    logAns('The matrix must be square (n x n) for finding the cofactor matrix.', 'warning');
+    return;
+  }
+
+  const determinantByLaplace = (matrix, n) => {
+    // Base case: for 2x2 matrix, use the formula ad - bc
+    if (n === 2) {
+      return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+    }
+
+    let result = 0;
+
+    for (let j = 0; j < n; j++) {
+      const sign = (j % 2 === 0) ? 1 : -1;
+      const submatrix = [];
+      for (let i = 1; i < n; i++) {
+        submatrix.push(matrix[i].filter((_, index) => index !== j));
+      }
+      result += sign * matrix[0][j] * determinantByLaplace(submatrix, n - 1);
+    }
+
+    return result;
+  };
+
+  const getCofactor = (matrix, row, col) => {
+    const minor = matrix.slice();
+    minor.splice(row, 1);
+    for (let i = 0; i < minor.length; i++) {
+      minor[i] = minor[i].slice(0, col).concat(minor[i].slice(col + 1));
+    }
+    const determinant = determinantByLaplace(minor, minor.length);
+    return (row + col) % 2 === 0 ? determinant : -determinant;
+  };
+
+  const cofactorMatrix = [];
+
+  for (let i = 0; i < n; i++) {
+    cofactorMatrix.push([]);
+    for (let j = 0; j < n; j++) {
+      cofactorMatrix[i][j] = getCofactor(matrix, i, j);
+    }
+  }
+
+  // Store the cofactor matrix with a new name, assuming you want to prefix 'Cof' to the original matrix name
+  matrices[`Cof${matrixName}`] = cofactorMatrix;
+
+  // Refresh the matrices display
+  displayMatrices();
+}
+
+// Call this function from performMatrixOperation() when 'cofactor' operation is selected
+
+
 
 // Function to add two matrices
 function addMatrices(matrixNameA, matrixNameB) {
@@ -377,9 +446,6 @@ function subtractMatrices(matrixNameA, matrixNameB) {
   // Refresh the matrices display
   displayMatrices();
 }
-
-
-
 
 
 function updateMatrix(matrixName, rowIndex, colIndex, value) {

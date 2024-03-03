@@ -128,11 +128,29 @@ function createEditableTable(matrix, matrixName) {
       const cell = document.createElement('td');
       cell.className = 'border-solid border-2 border-gray-700';
       const input = document.createElement('input');
-      input.type = 'number';
+      input.type = 'text'; // Change input type to text
       input.value = matrix[i][j];
       // Add classes to the input element
       input.className = 'matrix-input border-solid border-2 border-gray-700 focus:border-blue-500 outline-none dark:bg-gray-700 p-2 rounded-lg text-center w-16 m-2 mx-2';
       input.addEventListener('input', (event) => updateMatrix(matrixName, i, j, event.target.value));
+
+      // Add blur event listener to evaluate expressions
+      input.addEventListener('blur', (event) => {
+        const value = event.target.value.trim();
+        if (value !== '') {
+          try {
+            // Evaluate the expression
+            const result = eval(value);
+            // Update the input value with the result
+            event.target.value = result;
+            // Update the matrix data
+            updateMatrix(matrixName, i, j, result);
+          } catch (error) {
+            console.error('Error evaluating expression:', error);
+          }
+        }
+      });
+
       cell.appendChild(input);
       row.appendChild(cell);
     }
@@ -142,7 +160,6 @@ function createEditableTable(matrix, matrixName) {
 
   return table;
 }
-
 
 
 

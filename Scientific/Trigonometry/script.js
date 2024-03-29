@@ -1,5 +1,42 @@
 // File name: script.js
 
+function applyFormula(expression) {
+  const match = expression.match(/([a-z]+)\((\d+)\)/i);
+  if (match) {
+      const func = match[1].toLowerCase();
+      const value = parseInt(match[2]);
+      const n = Math.floor(value / 90); // Extract n from the input
+      const angle = value % 90; // Extract angle from the input
+
+      // Apply formula for the first time
+      const firstOutput = (n % 2 === 0) ? Math.cos(angle) : Math.sin(angle);
+
+      // Apply formula for the second time
+      const secondN = (n % 2 === 0) ? n - 1 : n + 1;
+      const secondAngle = (n % 2 === 0) ? -angle : angle;
+      const secondOutput = (secondN % 2 === 0) ? Math.cos(secondAngle) : Math.sin(secondAngle);
+
+      return {
+          firstOutput,
+          secondOutput
+      };
+  } else {
+      return null; // Invalid input format
+  }
+}
+
+// Example usage
+const input = "cos(1030)"; // You can change this input
+const result = applyFormula(input);
+
+if (result) {
+  console.log("First Output:", result.firstOutput);
+  console.log("Second Output:", result.secondOutput);
+} else {
+  console.log("Invalid input format.");
+}
+
+
 function calculatePeriodicity() {
   const functionSelect = document.getElementById('functionSelectPeriodicity');
   const selectedFunction = functionSelect.value;
@@ -76,78 +113,105 @@ function performTrigonometricOperation() {
   displayResult(result);
 }
 
+function displayResult(result) {
+  const resultElement = document.getElementById('result');
+  if (resultElement) {
+    resultElement.innerHTML = `<p class="text-blue-500">Result: ${result.result}</p><p class="text-gray-500">Steps: ${result.steps}</p>`;
+  }
+}
 
 function calculateSin(angle) {
-  // Calculate the angle within the range [0, 360)
-  const normalizedAngle = angle % 360;
-  const positiveAngle = normalizedAngle >= 0 ? normalizedAngle : 360 + normalizedAngle;
-
-  // Check if the angle matches one of the known solutions
-  if (positiveAngle === 330) {
-    return -Math.cos(30 * Math.PI / 180); // Using the solution for sin(690)
-  } else if (positiveAngle === 45) {
-    return Math.sin(45 * Math.PI / 180); // Using the solution for sin(315)
-  } else if (positiveAngle === 690) {
-    return -Math.cos(30 * Math.PI / 180); // Using the solution for sin(690)
-  } else {
-    logError('Angle not supported.');
-    return null;
-  }
+  const n = Math.floor(angle / 90);
+  const theta = angle % 90;
+  const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
+  const result = Math.sin(finalAngle * Math.PI / 180);
+  const steps = [
+    `Step 1: sin(${angle})`,
+    `Step 2: sin(90 * ${n} ${n % 2 === 0 ? '+' : '-'} ${theta})`,
+    `Step 3: sin(${finalAngle})`
+  ];
+  return { result, steps: steps.join(' = ') };
 }
 
 function calculateCos(angle) {
-  // Calculate the angle within the range [0, 360)
-  const normalizedAngle = angle % 360;
-  const positiveAngle = normalizedAngle >= 0 ? normalizedAngle : 360 + normalizedAngle;
-
-  // Check if the angle matches one of the known solutions
-  if (positiveAngle === 480) {
-    return -1 / 2; // Using the solution for cos(480)
-  } else if (positiveAngle === 570) {
-    return -Math.cos(30 * Math.PI / 180); // Using the solution for cos(570)
-  } else {
-    logError('Angle not supported.');
-    return null;
+  const n = Math.floor(angle / 90);
+  let n_even = Math.floor(angle / 90);
+  let n_odd = Math.ceil(angle / 90);
+  // Adjust n_even if it's odd
+  if (n_even % 2 !== 0) {
+    n_even++;
   }
+  // Adjust n_odd if it's even
+  if (n_odd % 2 === 0) {
+    n_odd--;
+  }
+
+  let theta_1, theta_2 = 0;
+
+  if (90 * n_even <= angle) {
+    theta_1 = angle - 90 * n_even;
+  } else {
+    theta_1 = 90 * n_even - angle;
+  }
+
+
+  if (90 * n_odd >= angle) {
+    theta_2 = (90 * n_odd) - angle;
+  } else { 
+    theta_2 = angle - (90 * n_odd);
+  }
+
+
+  const theta = angle % 90;
+  const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
+  const result = Math.cos(finalAngle * Math.PI / 180);
+  const steps = [
+    `when n is even: ${n_even} = <br>`,
+    `when n is odd: ${n_odd} = <br>`,
+    `first Θ: ${theta_1} = <br>`,
+    `second Θ: ${theta_2} = <br>`,
+    `Step 2: cos(90 * ${n_even} ${90* n_even >= angle ? '-' : '+'} ${theta}) <br>`,
+    `Step 3: cos(90 * ${n_odd} ${90* n_odd >= angle ? '-' : '+'} ${theta}) <br>`,
+    `Step 4: sin(${theta_2}) <br>`,
+    `Step 5: cos(${theta_1}) <br>`
+  ];
+  return { result, steps: steps.join(' = ') };
 }
+
 
 function calculateTan(angle) {
   // Calculate the angle within the range [0, 360)
   const normalizedAngle = angle % 360;
   const positiveAngle = normalizedAngle >= 0 ? normalizedAngle : 360 + normalizedAngle;
 
-  // Define known solutions for certain angles
-  const solutions = {
-    15: { result: 2 - Math.sqrt(3), steps: "tan(15)" }, // Solution for tan(15)
-    195: { result: 2 - Math.sqrt(3), steps: "tan(90*2 + 15) = tan(15)" }, // Solution for tan(195)
-    285: { result: -2 + Math.sqrt(3), steps: "tan(90*3 - 75) = tan(-75)" }, // Solution for tan(285)
-    // Add more known solutions here as needed
-  };
+  // Calculate n and the angle within the first 90 degrees range
+  const n = Math.floor(positiveAngle / 90);
+  const theta = positiveAngle % 90;
 
-  // Check if the angle matches one of the known solutions
-  if (solutions.hasOwnProperty(positiveAngle)) {
-    let steps = [];
-    for (const angleKey in solutions) {
-      if (Object.hasOwnProperty.call(solutions, angleKey)) {
-        const { result, steps: step } = solutions[angleKey];
-        steps.push(`${step} = ${result}`);
-      }
-    }
-    const result = solutions[positiveAngle].result;
-    return `Steps: ${steps.join(", ")}, Result: ${result}`;
-  } else {
-    logError('Angle not supported.');
-    return null;
+  // Calculate the final angle and determine if it's positive or negative
+  const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
+  const result = Math.tan(finalAngle * Math.PI / 180);
+
+  // Construct the steps to show how the calculation was done
+  const steps = [`tan(${angle})`];
+  if (n > 0) {
+    steps.push(`tan(90 * ${n} ${n % 2 === 0 ? '-' : '+'} ${theta})`);
+    steps.push(`tan(${finalAngle})`);
   }
+
+  // Return the result along with the steps
+  return { result, steps: steps.join(" = ") };
 }
 
 
-function displayResult(result) {
-  const resultElement = document.getElementById('result');
-  if (resultElement) {
-    resultElement.innerHTML = `<p class="text-blue-500">Result: ${result}</p>`;
-  }
-}
+
+// function displayResult(result) {
+//   const resultElement = document.getElementById('result');
+//   if (resultElement) {
+//     resultElement.innerHTML = `<p class="text-blue-500">Result: ${result.result}</p><p class="text-gray-500">Steps: ${result.steps}</p>`;
+//   }
+// }
+
 
 
 const canvas = document.getElementById('trigCircle');

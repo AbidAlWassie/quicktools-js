@@ -122,16 +122,45 @@ function displayResult(result) {
 
 function calculateSin(angle) {
   const n = Math.floor(angle / 90);
+  let n_even = Math.floor(angle / 90);
+  let n_odd = Math.ceil(angle / 90);
+
+  // Adjust n_even if it's odd
+  if (n_even % 2 !== 0) {
+    n_even++;
+  }
+
+  // Adjust n_odd if it's even
+  if (n_odd % 2 === 0) {
+    n_odd--;
+  }
+
+  let theta_1, theta_2 = 0;
+
+  if (90 * n_even <= angle) {
+    theta_1 = angle - 90 * n_even;
+  } else {
+    theta_1 = 90 * n_even - angle;
+  }
+
+  if (90 * n_odd >= angle) {
+    theta_2 = (90 * n_odd) - angle;
+  } else { 
+    theta_2 = angle - (90 * n_odd);
+  }
+
   const theta = angle % 90;
   const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
   const result = Math.sin(finalAngle * Math.PI / 180);
   const steps = [
-    `Step 1: sin(${angle})`,
-    `Step 2: sin(90 * ${n} ${n % 2 === 0 ? '+' : '-'} ${theta})`,
-    `Step 3: sin(${finalAngle})`
+    `Step 1: sin(90 * ${n_even} ${90* n_even >= angle ? '-' : '+'} ${theta_1}) <br>`,
+    `Step 1: sin(${theta_1}) <br>`,
+    `Step 2: sin(90 * ${n_odd} ${90* n_odd >= angle ? '-' : '+'} ${theta_2}) <br>`,
+    `Step 2: cos(${theta_2}) <br>`,
   ];
   return { result, steps: steps.join(' = ') };
 }
+
 
 function calculateCos(angle) {
   const n = Math.floor(angle / 90);
@@ -166,41 +195,54 @@ function calculateCos(angle) {
   const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
   const result = Math.cos(finalAngle * Math.PI / 180);
   const steps = [
-    `when n is even: ${n_even} = <br>`,
-    `when n is odd: ${n_odd} = <br>`,
-    `first Θ: ${theta_1} = <br>`,
-    `second Θ: ${theta_2} = <br>`,
-    `Step 2: cos(90 * ${n_even} ${90* n_even >= angle ? '-' : '+'} ${theta}) <br>`,
-    `Step 3: cos(90 * ${n_odd} ${90* n_odd >= angle ? '-' : '+'} ${theta}) <br>`,
-    `Step 4: sin(${theta_2}) <br>`,
-    `Step 5: cos(${theta_1}) <br>`
+    `Step 1: cos(90 * ${n_even} ${90* n_even >= angle ? '-' : '+'} ${theta_1}) <br>`,
+    `Step 1: cos(${theta_1}) <br>`,
+    `Step 2: cos(90 * ${n_odd} ${90* n_odd >= angle ? '-' : '+'} ${theta_2}) <br>`,
+    `Step 2: sin(${theta_2}) <br>`,
   ];
   return { result, steps: steps.join(' = ') };
 }
 
 
 function calculateTan(angle) {
-  // Calculate the angle within the range [0, 360)
-  const normalizedAngle = angle % 360;
-  const positiveAngle = normalizedAngle >= 0 ? normalizedAngle : 360 + normalizedAngle;
+  const n = Math.floor(angle / 90);
+  let n_even = Math.floor(angle / 90);
+  let n_odd = Math.ceil(angle / 90);
 
-  // Calculate n and the angle within the first 90 degrees range
-  const n = Math.floor(positiveAngle / 90);
-  const theta = positiveAngle % 90;
-
-  // Calculate the final angle and determine if it's positive or negative
-  const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
-  const result = Math.tan(finalAngle * Math.PI / 180);
-
-  // Construct the steps to show how the calculation was done
-  const steps = [`tan(${angle})`];
-  if (n > 0) {
-    steps.push(`tan(90 * ${n} ${n % 2 === 0 ? '-' : '+'} ${theta})`);
-    steps.push(`tan(${finalAngle})`);
+  // Adjust n_even if it's odd
+  if (n_even % 2 !== 0) {
+    n_even++;
   }
 
-  // Return the result along with the steps
-  return { result, steps: steps.join(" = ") };
+  // Adjust n_odd if it's even
+  if (n_odd % 2 === 0) {
+    n_odd--;
+  }
+
+  let theta_1, theta_2 = 0;
+
+  if (90 * n_even <= angle) {
+    theta_1 = angle - 90 * n_even;
+  } else {
+    theta_1 = 90 * n_even - angle;
+  }
+
+  if (90 * n_odd >= angle) {
+    theta_2 = (90 * n_odd) - angle;
+  } else { 
+    theta_2 = angle - (90 * n_odd);
+  }
+
+  const theta = angle % 90;
+  const finalAngle = (n % 2 === 0) ? theta : 90 - theta;
+  const result = Math.tan(finalAngle * Math.PI / 180);
+  const steps = [
+    `Step 1: tan(90 * ${n_even} ${90* n_even >= angle ? '-' : '+'} ${theta_1}) <br>`,
+    `Step 1: tan(${theta_1}) <br>`,
+    `Step 2: tan(90 * ${n_odd} ${90* n_odd >= angle ? '-' : '+'} ${theta_2}) <br>`,
+    `Step 2: tan(${theta_2}) <br>`,
+  ];
+  return { result, steps: steps.join(' = ') };
 }
 
 

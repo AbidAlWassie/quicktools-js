@@ -240,7 +240,7 @@ function calculateTan(angle) {
     `Step 1: tan(90 * ${n_even} ${90* n_even >= angle ? '-' : '+'} ${theta_1}) <br>`,
     `Step 1: tan(${theta_1}) <br>`,
     `Step 2: tan(90 * ${n_odd} ${90* n_odd >= angle ? '-' : '+'} ${theta_2}) <br>`,
-    `Step 2: tan(${theta_2}) <br>`,
+    `Step 2: cot(${theta_2}) <br>`,
   ];
   return { result, steps: steps.join(' = ') };
 }
